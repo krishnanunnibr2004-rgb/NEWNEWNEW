@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Hridya D R ❤️</title>
+
+  <style>
+    :root{
+      --pink:#ff2d6f;
+      --bg1:#fff0f6;
+      --bg2:#ffe6f0;
+      --text:#141414;
+      --card:#ffffffcc;
+      --shadow: 0 18px 55px rgba(0,0,0,0.08);
+      --line: rgba(255,45,111,0.25);
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* Floating hearts background */
+    .hearts{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .heart{
+      position:absolute;
+      bottom:-40px;
+      font-size:18px;
+      opacity:0.6;
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(0) translateX(0) rotate(0deg); }
+      to{ transform: translateY(-110vh) translateX(30px) rotate(25deg); }
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index: 50;
+      overflow:hidden;
+      display:none;
+    }
+    .confetti.show{ display:block; }
+    .piece{
+      position:absolute;
+      top:-20px;
+      width: 10px;
+      height: 16px;
+      opacity:0.9;
+      border-radius: 3px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{ transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Layout */
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 16px 60px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,45,111,0.12);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      margin-top: 16px;
+      transform: translateY(0);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.09);
+    }
+
+    .title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 8px 18px rgba(255,45,111,0.3);
+    }
+
+    .badge{
+      display:inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,45,111,0.1);
+      color: var(--pink);
+      font-weight: 900;
+      letter-spacing:0.3px;
+      margin-bottom: 10px;
+    }
+
+    h1{
+      margin: 8px 0 10px;
+      font-size: clamp(26px, 4vw, 44px);
+      line-height:1.1;
+      color:#111;
+    }
+
+    .sub{
+      margin: 0 auto;
+      max-width: 780px;
+      font-size: 16px;
+      line-height:1.75;
+      opacity:0.92;
+    }
+
+    .ctaRow{
+      margin-top: 14px;
+      display:flex;
+      gap: 12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    button{
+      border:0;
+      cursor:pointer;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 15px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    button:active{ transform: scale(0.98); }
+
+    .btnPrimary{
+      background: var(--pink);
+      color: white;
+      box-shadow: 0 16px 35px rgba(255,45,111,0.25);
+    }
+    .btnGhost{
+      background: rgba(0,0,0,0.06);
+      color:#111;
+    }
+
+    /* Password screen */
+    .lockScreen{
+      min-height: 92vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 20px;
+    }
+    .lockCard{
+      width: min(520px, 100%);
+      background: white;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.18);
+      text-align:center;
+      border: 1px solid rgba(255,45,111,0.18);
+    }
+    .lockCard h2{
+      margin: 8px 0 10px;
+      color: var(--pink);
+      font-size: 26px;
+    }
+    .lockCard p{
+      margin: 0 0 14px;
+      line-height:1.8;
+      opacity:0.9;
+    }
+    .lockInputRow{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    input{
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.16);
+      font-size: 15px;
+      width: 220px;
+      outline:none;
+      text-align:center;
+      font-weight:900;
+      letter-spacing:0.4px;
+    }
+    .hint{
+      font-size: 13px;
+      opacity:0.7;
+      margin-top: 10px;
+    }
+    .error{
+      margin-top: 10px;
+      font-weight: 900;
+    }
+
+    /* Hidden content */
+    #siteContent{
+      display:none;
+      animation: fadeIn .55s ease;
+    }
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    /* CHAT TIMELINE (modern WhatsApp vibe) */
+    .chatWrap{
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 22px;
+      padding: 14px;
+    }
+
+    .chatRow{
+      display:flex;
+      margin: 12px 0;
+      gap: 10px;
+      align-items:flex-end;
+    }
+    .left{ justify-content:flex-start; }
+    .right{ justify-content:flex-end; }
+
+    .bubble{
+      max-width: 78%;
+      padding: 12px 14px;
+      border-radius: 18px;
+      line-height:1.55;
+      font-weight: 800;
+      position:relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    .fromHer{
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .fromMe{
+      background: rgba(255,45,111,0.12);
+      border: 1px solid rgba(255,45,111,0.18);
+    }
+
+    .chatDate{
+      font-size: 12px;
+      font-weight: 900;
+      opacity:0.55;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.05);
+      white-space:nowrap;
+    }
+
+    /* Reasons */
+    .reasonBox{
+      background: rgba(255,255,255,0.55);
+      border: 1px dashed rgba(255,45,111,0.35);
+      border-radius: 18px;
+      padding: 16px;
+      line-height:1.7;
+      min-height: 92px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:900;
+    }
+
+    /* PHOTO TIMELINE (big images + connected line) */
+    .photoTimeline{
+      position:relative;
+      padding-left: 22px;
+      display:grid;
+      gap: 18px;
+    }
+    .photoTimeline:before{
+      content:"";
+      position:absolute;
+      left: 10px;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      border-radius: 999px;
+      background: var(--line);
+    }
+
+    .photoNode{
+      position:relative;
+      display:block;
+    }
+    .photoNode:before{
+      content:"";
+      position:absolute;
+      left: -18px;
+      top: 26px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 10px 25px rgba(255,45,111,0.25);
+    }
+
+    .photoBig{
+      width:100%;
+      height: 340px;
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(0,0,0,0.05);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      opacity:0.55;
+      transition: transform .2s ease;
+    }
+    .photoBig:hover{
+      transform: scale(1.01);
+    }
+    .photoBig img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,0.35);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 40;
+    }
+    .modal.open{ display:flex; }
+    .modalCard{
+      max-width: 560px;
+      width: 100%;
+      background: white;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+      text-align:center;
+      position:relative;
+    }
+    .modalCard h2{
+      margin: 4px 0 10px;
+      color: var(--pink);
+    }
+    .modalCard p{
+      margin: 0;
+      line-height:1.8;
+      font-size: 15px;
+    }
+    .close{
+      position:absolute;
+      right: 12px;
+      top: 10px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 900;
+    }
+
+    .footer{
+      margin-top: 12px;
+      text-align:center;
+      opacity:0.8;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" id="hearts"></div>
+  <div class="confetti" id="confetti"></div>
+
+  <!-- LOCK SCREEN -->
+  <div class="lockScreen" id="lockScreen">
+    <div class="lockCard">
+      <div class="badge">🔐 Private Love Page</div>
+      <h2>For Hridya D R ❤️</h2>
+      <p>
+        This page is locked because it contains our story 🥹💗<br>
+        Enter our special date to unlock.
+      </p>
+
+      <div class="lockInputRow">
+        <input id="passInput" placeholder="DD/MM/YYYY" maxlength="10" />
+        <button class="btnPrimary" onclick="unlock()">Unlock 💌</button>
+      </div>
+
+      <div class="hint">
+        Format: <b>01/01/2001</b>
+      </div>
+
+      <div class="error" id="lockError"></div>
+    </div>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div id="siteContent">
+    <div class="wrap">
+
+      <!-- HERO -->
+      <div class="card" style="text-align:center;">
+        <div class="badge">💌 5th Love Anniversary</div>
+        <h1>Happy 5th Love Anniversary, Hridya D R ❤️</h1>
+
+        <p class="sub">
+          <b>From childhood love… to forever.</b><br>
+          Thank you for choosing me, believing in us, and staying with me in the thick and thin of my life.
+        </p>
+
+        <div class="ctaRow">
+          <button class="btnPrimary" onclick="openSurprise()">Click for a Surprise 💝</button>
+          <button class="btnGhost" onclick="scrollToSection('chatSec')">Our Chats 💬</button>
+          <button class="btnGhost" onclick="scrollToSection('reasonsSec')">Reasons ❤️</button>
+          <button class="btnGhost" onclick="scrollToSection('photosSec')">Photos 📸</button>
+        </div>
+
+        <div class="footer">Made with love by Krishnanunni 💗</div>
+      </div>
+
+      <!-- CHAT TIMELINE -->
+      <div class="card" id="chatSec">
+        <div class="title"><span class="dot"></span> Our Chats (the tone changed… and so did my life)</div>
+
+        <p style="margin:0 0 12px; opacity:0.88; line-height:1.7;">
+          It started with arrogance 😏… and slowly became the sweetest love 🥹❤️
+        </p>
+
+        <div class="chatWrap">
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">Don't msg me plzzz</div>
+            <div class="chatDate">Nov 26, 2020</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">Athinu Njan endh venam</div>
+            <div class="chatDate">Jan 13, 2021</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">Status ittillenkil orakkam varoole😠</div>
+            <div class="chatDate">Jan 23, 2021</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">
+              Athentha... nallathalle Paranjath.. pinnentha thanks parnjal..
+            </div>
+            <div class="chatDate">Feb 7, 2021</div>
+          </div>
+
+          <div class="chatRow right">
+            <div class="chatDate">Feb 8, 2021</div>
+            <div class="bubble fromMe">Ishtano?</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">
+              Inn propose day alle😁 njn chettane propose cheythirikkunnu... pore ❤️
+            </div>
+            <div class="chatDate">Feb 8, 2021</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">Ishtamaan enikk orupaad.. Athreyullu❤️</div>
+            <div class="chatDate">Feb 8, 2025</div>
+          </div>
+
+          <div class="chatRow left">
+            <div class="bubble fromHer">
+              Happy fifth love anniversary... my soul🥳🎊🎉😗🫂
+            </div>
+            <div class="chatDate">Feb 8, 2026</div>
+          </div>
+
+        </div>
+
+        <div class="footer">
+          From “Don’t msg me” to “my soul” 😭❤️ — only you could do that.
+        </div>
+      </div>
+
+      <!-- REASONS -->
+      <div class="card" id="reasonsSec">
+        <div class="title"><span class="dot"></span> Click for a Reason I Love You</div>
+
+        <div class="reasonBox" id="reasonBox">
+          Click the button below ❤️
+        </div>
+
+        <div class="ctaRow" style="margin-top:12px;">
+          <button class="btnPrimary" onclick="newReason()">Give me one reason 😭</button>
+          <button class="btnGhost" onclick="resetReasons()">Reset 🔁</button>
+        </div>
+      </div>
+
+      <!-- PHOTO TIMELINE -->
+      <div class="card" id="photosSec">
+        <div class="title"><span class="dot"></span> Our Photos (Bond Growth Timeline)</div>
+
+        <p style="margin:0 0 12px; opacity:0.88; line-height:1.7;">
+          Add photos from old to new… and watch our love grow down this line ❤️
+        </p>
+
+        <div class="photoTimeline">
+
+          <!-- Replace these placeholders with <img> later -->
+          <div class="photoNode">
+            <div class="photoBig">OLD PHOTO 1</div>
+          </div>
+
+          <div class="photoNode">
+            <div class="photoBig">OLD PHOTO 2</div>
+          </div>
+
+          <div class="photoNode">
+            <div class="photoBig">ENGAGEMENT ERA</div>
+          </div>
+
+          <div class="photoNode">
+            <div class="photoBig">MARRIED LIFE</div>
+          </div>
+
+          <div class="photoNode">
+            <div class="photoBig">NEWEST PHOTO ❤️</div>
+          </div>
+
+        </div>
+
+        <div class="footer">
+          Want me to help you add real images? I’ll guide you in 2 minutes 😄
+        </div>
+      </div>
+
+      <!-- SURPRISE SECTION -->
+      <div class="card" style="text-align:center;">
+        <div class="title" style="justify-content:center;"><span class="dot"></span> One More Surprise 😌💝</div>
+        <p style="margin:0; line-height:1.8; opacity:0.9;">
+          If you smile while reading this… my job is done 😭❤️
+        </p>
+        <div class="ctaRow">
+          <button class="btnPrimary" onclick="openSurprise()">Open Surprise 💗</button>
+          <button class="btnGhost" onclick="blastConfetti()">Celebrate 🎉</button>
+        </div>
+      </div>
+
+      <!-- MARRY ME AGAIN -->
+      <div class="card" style="text-align:center;">
+        <div class="title" style="justify-content:center;"><span class="dot"></span> Marry Me Again? 😏💍</div>
+
+        <p style="margin:0 0 12px; line-height:1.8; opacity:0.9;">
+          Hridya D R… will you choose me again? 🥺❤️
+        </p>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; min-height:70px;">
+          <button class="btnPrimary" onclick="yesClicked()">YES ❤️</button>
+          <button class="btnGhost" id="noBtn" onmouseover="runAway()" onclick="runAway()">NO 😏</button>
+        </div>
+
+        <p id="yesText" style="margin-top:12px; font-weight:900; color:var(--pink);"></p>
+      </div>
+
+      <!-- FINAL NOTE -->
+      <div class="card" style="text-align:center;">
+        <div class="title" style="justify-content:center;"><span class="dot"></span> Final Love Note</div>
+
+        <p style="margin:0; line-height:1.95; font-size:16px;">
+          <b>Hridya</b>, you’re not just my love.<br>
+          You’re my best friend, my peace, my home. 🏡❤️
+          <br><br>
+          And the smile on your face… that was the cause behind my love for you.<br>
+          So I will maintain that smile on your face throughout our life. 🥹🫂❤️
+          <br><br>
+          <span style="color:var(--pink); font-weight:900;">
+            5 years down… forever to go.
+          </span>
+        </p>
+
+        <div class="footer" style="margin-top:12px;">
+          Happy 5th Love Anniversary ❤️
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Surprise Modal -->
+  <div class="modal" id="modal">
+    <div class="modalCard">
+      <button class="close" onclick="closeSurprise()">✖</button>
+      <h2>💝 Surprise for you</h2>
+      <p>
+        I didn’t just fall in love with you once…<br>
+        I fall in love with you again and again — every day.
+        <br><br>
+        Thank you for choosing me, loving me, and staying with me.<br>
+        <b>Happy 5th Love Anniversary, Hridya D R ❤️</b>
+        <br><br>
+        <span style="color:#ff2d6f; font-weight:900;">
+          “Ishtamanu” — forever.
+        </span>
+      </p>
+
+      <div class="ctaRow" style="margin-top:16px;">
+        <button class="btnPrimary" onclick="blastConfetti()">Celebrate 🎉</button>
+        <button class="btnGhost" onclick="closeSurprise()">Aww okay 🥹</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts
+    const hearts = document.getElementById("hearts");
+    const heartEmojis = ["❤️","💖","💘","💕","💗","💞"];
+
+    function makeHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+      h.style.left = Math.random()*100 + "vw";
+      h.style.animationDuration = (6 + Math.random()*8) + "s";
+      h.style.fontSize = (14 + Math.random()*22) + "px";
+      h.style.opacity = (0.25 + Math.random()*0.6);
+      hearts.appendChild(h);
+      setTimeout(() => h.remove(), 14000);
+    }
+    setInterval(makeHeart, 420);
+    for(let i=0;i<14;i++) setTimeout(makeHeart, i*180);
+
+    // Confetti
+    const confetti = document.getElementById("confetti");
+    function blastConfetti(){
+      confetti.innerHTML = "";
+      confetti.classList.add("show");
+
+      const pieces = 130;
+      for(let i=0;i<pieces;i++){
+        const p = document.createElement("div");
+        p.className = "piece";
+        p.style.left = Math.random()*100 + "vw";
+        p.style.animationDuration = (2.2 + Math.random()*2.6) + "s";
+        p.style.transform = `rotate(${Math.random()*360}deg)`;
+        p.style.background = `hsl(${Math.random()*360}, 90%, 60%)`;
+        p.style.width = (6 + Math.random()*10) + "px";
+        p.style.height = (10 + Math.random()*16) + "px";
+        confetti.appendChild(p);
+        setTimeout(()=>p.remove(), 5200);
+      }
+
+      setTimeout(()=>confetti.classList.remove("show"), 4200);
+    }
+
+    // Unlock system
+    const correctPassword = "08/02/2021";
+
+    function unlock(){
+      const val = document.getElementById("passInput").value.trim();
+      const err = document.getElementById("lockError");
+
+      if(val === correctPassword){
+        err.style.color = "var(--pink)";
+        err.innerText = "Access granted 🥹❤️";
+        setTimeout(() => {
+          document.getElementById("lockScreen").style.display = "none";
+          document.getElementById("siteContent").style.display = "block";
+          blastConfetti();
+        }, 600);
+      } else {
+        err.style.color = "#222";
+        err.innerText = "Wrong date 😏 Try again, my love ❤️";
+      }
+    }
+
+    document.getElementById("passInput").addEventListener("keydown", (e)=>{
+      if(e.key === "Enter") unlock();
+    });
+
+    // Smooth scroll
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    // Reasons
+    const reasons = [
+      "Because you are my peace. 🕊️",
+      "Because your smile fixes my entire day. 🥹",
+      "Because you stayed when life got tough. ❤️",
+      "Because you’re my best friend and my love in one person.",
+      "Because you make ordinary moments feel magical ✨",
+      "Because you believed in us from the beginning.",
+      "Because you’re strong, kind, and beautiful inside-out.",
+      "Because your love feels like home 🏡",
+      "Because you’re the reason I try harder in life.",
+      "Because you’re my favorite person… forever.",
+      "Because you said “Ishtamanu” and my heart never recovered 😭❤️",
+      "Because every version of you is lovable.",
+      "Because we grew up together… and we’re still growing.",
+      "Because your presence is my comfort.",
+      "Because I’d choose you again. Always."
+    ];
+
+    let used = [];
+    const box = document.getElementById("reasonBox");
+
+    function newReason(){
+      if(used.length === reasons.length){
+        box.innerHTML = "Okay stop 😭❤️ You already know I love you endlessly.";
+        return;
+      }
+      let r;
+      do{
+        r = reasons[Math.floor(Math.random()*reasons.length)];
+      }while(used.includes(r));
+
+      used.push(r);
+      box.innerHTML = r;
+    }
+
+    function resetReasons(){
+      used = [];
+      box.innerHTML = "Reset done 💗 Now click again!";
+    }
+
+    // Surprise modal
+    const modal = document.getElementById("modal");
+    function openSurprise(){ modal.classList.add("open"); }
+    function closeSurprise(){ modal.classList.remove("open"); }
+
+    // Marry me again
+    function runAway(){
+      const noBtn = document.getElementById("noBtn");
+      const x = Math.random() * 240 - 120;
+      const y = Math.random() * 140 - 70;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function yesClicked(){
+      document.getElementById("yesText").innerText = "I KNEW ITTT 😭❤️💍";
+      blastConfetti();
+    }
+  </script>
+</body>
+</html>
